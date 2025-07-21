@@ -3,7 +3,7 @@ project(greenball_detection)
 
 #set(OpenCV_DIR "D:\\Opencv\\opencv\\build\\x64\\cv\\install")
 set(CMAKE_BUILD_TYPE Debug)
-find_package(OpenCV REQUIRED)
+find_package(OpenCV 4 REQUIRED)
 
 file(GLOB_RECURSE SOURCES "src/*.cpp")
 add_executable(opencv ${SOURCES})
