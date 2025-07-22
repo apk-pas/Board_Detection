@@ -35,12 +35,12 @@ Mat origin_Process(Mat img)
 
 int Match_Image(Mat img)
 {
-    Mat example = imread("/home/summer/Board_Detection/photo/exp.png",0);
+    Mat example = imread("/home/summer/Board_Detection/results/exp.png",0);
 
     //进行物体轮廓匹配s
-    double value = matchShapes(example,img,CONTOURS_MATCH_I1,0.5);
+    double value = matchShapes(example,img,CONTOURS_MATCH_I1,0.1);
     cout << value << endl;
-    double a = 0.8 ;//匹配的阈值
+    double a = 0.1 ;//匹配的阈值
     if(value < a)
     {
         return 1;

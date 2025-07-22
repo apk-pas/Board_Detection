@@ -10,7 +10,7 @@ int Match_Image(Mat img);
 
 int main()
 {
-    Mat img = imread("/home/summer/Board_Detection/photo/test.jpg");
+    Mat img = imread("/home/summer/Board_Detection/photo/new5.jpg");
     if(img.empty())
     {
         cerr << "img is empty" << endl;
