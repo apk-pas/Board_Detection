@@ -1,3 +1,3 @@
-E:/VScode_Projects/board_detection/build/CMakeFiles/opencv.dir
-E:/VScode_Projects/board_detection/build/CMakeFiles/edit_cache.dir
-E:/VScode_Projects/board_detection/build/CMakeFiles/rebuild_cache.dir
+/home/summer/Board_Detection/build/CMakeFiles/opencv.dir
+/home/summer/Board_Detection/build/CMakeFiles/edit_cache.dir
+/home/summer/Board_Detection/build/CMakeFiles/rebuild_cache.dir

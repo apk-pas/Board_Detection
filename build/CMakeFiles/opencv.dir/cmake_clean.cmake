@@ -1,13 +1,13 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/opencv.dir/src/board_detector.cpp.obj"
-  "CMakeFiles/opencv.dir/src/board_detector.cpp.obj.d"
-  "CMakeFiles/opencv.dir/src/cam_capture.cpp.obj"
-  "CMakeFiles/opencv.dir/src/cam_capture.cpp.obj.d"
-  "CMakeFiles/opencv.dir/src/main.cpp.obj"
-  "CMakeFiles/opencv.dir/src/main.cpp.obj.d"
-  "libopencv.dll.a"
-  "opencv.exe"
-  "opencv.exe.manifest"
+  "CMakeFiles/opencv.dir/src/board_detector.cpp.o"
+  "CMakeFiles/opencv.dir/src/board_detector.cpp.o.d"
+  "CMakeFiles/opencv.dir/src/cam_capture.cpp.o"
+  "CMakeFiles/opencv.dir/src/cam_capture.cpp.o.d"
+  "CMakeFiles/opencv.dir/src/main.cpp.o"
+  "CMakeFiles/opencv.dir/src/main.cpp.o.d"
+  "CMakeFiles/opencv.dir/src/serial.cpp.o"
+  "CMakeFiles/opencv.dir/src/serial.cpp.o.d"
+  "opencv"
   "opencv.pdb"
 )
 
