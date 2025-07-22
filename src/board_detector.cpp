@@ -4,39 +4,46 @@
 using namespace cv;
 using namespace std;
 
-void origin_Process(Mat img)
+Mat origin_Process(Mat img)
 {
-    Mat gray;
-    //图像转为灰度图
-    cvtColor(img,gray,COLOR_BGR2GRAY);
-    //imshow("gray",gray);
+    //转hsv图像并提取出黄色
+    Mat hsv;
+    cvtColor(img,hsv,COLOR_BGR2HSV);
+    inRange(hsv,Scalar(20,80,80),Scalar(40,255,255),hsv);
+    imshow("hsv",hsv);
 
+    //三次腐蚀三次膨胀去噪点
     Mat kernel = getStructuringElement(MORPH_ELLIPSE, Size(3, 3));
-    for(int i=0;i<3;i++){
+    for(int i=0;i<1;i++){
         //morphologyEx(gray,gray,MORPH_OPEN,kernel);
-        erode(gray,gray,kernel);
+        erode(hsv,hsv,kernel);
     }
-    for(int i=0;i<3;i++){
+    for(int i=0;i<1;i++){
         //morphologyEx(gray,gray,MORPH_CLOSE,kernel);s
-        dilate(gray,gray,kernel);
+        dilate(hsv,hsv,kernel);
     }
-    imshow("mor",gray);
+    //imshow("mor",hsv);
 
+    //利用高斯模糊降噪之后利用canny算子提取物体边缘
     Mat edge;
-    GaussianBlur(gray, gray, Size(5,5), 2, 2);
-    Canny(gray,edge,150,100);
-    // vector<vector<Point>> contours;//find contours
-    // findContours(edge,contours,RETR_EXTERNAL,CHAIN_APPROX_SIMPLE);
-    // Mat temp = Mat::zeros(edge.size(),CV_8UC1);// build new Mat
-
-    // for(size_t i = 0;i<contours.size();i++)
-    // {
-    //     double leng = arcLength(contours[i],false);
-    //     if(leng>2)
-    //     {
-    //         drawContours(temp,contours,static_cast<int>(i),Scalar(255),1);
-    //     }
-    // }    
+    GaussianBlur(hsv, hsv, Size(3,3), 2, 2);
+    Canny(hsv,edge,150,50);
     imshow("edge",edge);
+    //imwrite("/home/summer/Board_Detection/photo/exp.png",edge);
+    return edge;
+}
 
+int Match_Image(Mat img)
+{
+    Mat example = imread("/home/summer/Board_Detection/photo/exp.png",0);
+
+    //进行物体轮廓匹配s
+    double value = matchShapes(example,img,CONTOURS_MATCH_I1,0.5);
+    cout << value << endl;
+    double a = 0.8 ;//匹配的阈值
+    if(value < a)
+    {
+        return 1;
+    }
+        return 0;
 }

@@ -5,17 +5,27 @@
 using namespace cv;
 using namespace std;
 
-void origin_Process(Mat img);
+Mat origin_Process(Mat img);
+int Match_Image(Mat img);
 
 int main()
 {
-    Mat img = imread("/home/summer/Board_Detection/photo/example.jpg");
+    Mat img = imread("/home/summer/Board_Detection/photo/test.jpg");
     if(img.empty())
     {
         cerr << "img is empty" << endl;
         exit(1);
     }
-    origin_Process(img);
+    Mat edge = origin_Process(img);
+
+    if(Match_Image(edge))
+    {
+        cout << "good" << endl;
+    }
+    else
+    {
+        cout << "bad" << endl;
+    }
 
     waitKey(0);
     return 0;
