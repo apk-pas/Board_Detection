@@ -12,6 +12,7 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/home/summer/Board_Detection/src/cam_capture.cpp" "CMakeFiles/opencv.dir/src/cam_capture.cpp.o" "gcc" "CMakeFiles/opencv.dir/src/cam_capture.cpp.o.d"
   "/home/summer/Board_Detection/src/main.cpp" "CMakeFiles/opencv.dir/src/main.cpp.o" "gcc" "CMakeFiles/opencv.dir/src/main.cpp.o.d"
   "/home/summer/Board_Detection/src/serial.cpp" "CMakeFiles/opencv.dir/src/serial.cpp.o" "gcc" "CMakeFiles/opencv.dir/src/serial.cpp.o.d"
+  "/home/summer/Board_Detection/src/test.cpp" "CMakeFiles/opencv.dir/src/test.cpp.o" "gcc" "CMakeFiles/opencv.dir/src/test.cpp.o.d"
   )
 
 # Targets to which this target links.

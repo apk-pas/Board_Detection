@@ -7,26 +7,15 @@ using namespace std;
 
 Mat origin_Process(Mat img);
 int Match_Image(Mat img);
+void find(Mat edge,Mat img);
+void capture(VideoCapture video);
+void tests(VideoCapture video);
 
 int main()
 {
-    Mat img = imread("/home/summer/Board_Detection/photo/new5.jpg");
-    if(img.empty())
-    {
-        cerr << "img is empty" << endl;
-        exit(1);
-    }
-    Mat edge = origin_Process(img);
+    VideoCapture video(0);
+    //capture(video);
+    tests(video);
 
-    if(Match_Image(edge))
-    {
-        cout << "good" << endl;
-    }
-    else
-    {
-        cout << "bad" << endl;
-    }
-
-    waitKey(0);
     return 0;
 }

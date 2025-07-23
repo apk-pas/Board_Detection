@@ -7,6 +7,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/opencv.dir/src/main.cpp.o.d"
   "CMakeFiles/opencv.dir/src/serial.cpp.o"
   "CMakeFiles/opencv.dir/src/serial.cpp.o.d"
+  "CMakeFiles/opencv.dir/src/test.cpp.o"
+  "CMakeFiles/opencv.dir/src/test.cpp.o.d"
   "opencv"
   "opencv.pdb"
 )

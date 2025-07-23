@@ -1,6 +1,6 @@
-CMakeFiles/opencv.dir/src/cam_capture.cpp.o: \
- /home/summer/Board_Detection/src/cam_capture.cpp \
- /usr/include/stdc-predef.h /usr/include/opencv4/opencv2/opencv.hpp \
+CMakeFiles/opencv.dir/src/test.cpp.o: \
+ /home/summer/Board_Detection/src/test.cpp /usr/include/stdc-predef.h \
+ /usr/include/opencv4/opencv2/opencv.hpp \
  /usr/include/opencv4/opencv2/opencv_modules.hpp \
  /usr/include/opencv4/opencv2/core.hpp \
  /usr/include/opencv4/opencv2/core/cvdef.h \
