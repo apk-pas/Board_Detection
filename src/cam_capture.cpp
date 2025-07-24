@@ -13,17 +13,17 @@ void capture(VideoCapture video)
     Mat frame;
     while (1)
     {
+        //从摄像头读取一帧图像
         video >> frame;
         Mat edge = origin_Process(frame);
 
+        //找寻六边形
         find(edge,frame);
-        //imshow("frame",frame);
 
+        //等待esc键退出
         if(waitKey(80)==27)
         {
             break;
         }
-        //processImage(frame);
-
     }
 }

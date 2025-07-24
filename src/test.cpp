@@ -18,16 +18,16 @@ void tests(VideoCapture video)
     // 腐蚀膨胀参数
     int erode_iters = 2;
     int dilate_iters = 2;
-    int morph_kernel = 3; // 核大小，3表示3x3
+    int morph_kernel = 3; 
 
-    // 高斯模糊核大小，必须奇数，初始化为3
+    // 高斯模糊核大小
     int blur_ksize = 3;
 
     // Canny 阈值
     int canny_thresh1 = 150;
     int canny_thresh2 = 100;
 
-    // approxPolyDP 精度比例，0.025对应25，这里用滑动条100为最大
+    //精度比例设置
     int approx_factor = 20;
 
     // 面积筛选
@@ -103,13 +103,12 @@ void tests(VideoCapture video)
         // 轮廓查找
         vector<vector<Point>> contours;
         findContours(edge, contours, RETR_LIST, CHAIN_APPROX_SIMPLE);
-
         vector<Point> allHexPoints;
         Mat result = frame.clone();
         int a = 0;
 
-        // approxPolyDP的epsilon
-        double approx_eps = approx_factor / 1000.0; // 0.025 对应滑动条 25
+        //逼近精度设置
+        double approx_eps = approx_factor / 1000.0;
 
         for (size_t i = 0; i < contours.size(); i++)
         {

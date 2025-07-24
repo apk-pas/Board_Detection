@@ -13,10 +13,8 @@ void tests(VideoCapture video);
 
 int main()
 {
+    //打开摄像头并进行帧处理
     VideoCapture video(0);
     capture(video);
-    //tests(video);
-
-
     return 0;
 }
