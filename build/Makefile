@@ -201,6 +201,30 @@ src/main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/opencv.dir/build.make CMakeFiles/opencv.dir/src/main.cpp.s
 .PHONY : src/main.cpp.s
 
+src/pnp.o: src/pnp.cpp.o
+.PHONY : src/pnp.o
+
+# target to build an object file
+src/pnp.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/opencv.dir/build.make CMakeFiles/opencv.dir/src/pnp.cpp.o
+.PHONY : src/pnp.cpp.o
+
+src/pnp.i: src/pnp.cpp.i
+.PHONY : src/pnp.i
+
+# target to preprocess a source file
+src/pnp.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/opencv.dir/build.make CMakeFiles/opencv.dir/src/pnp.cpp.i
+.PHONY : src/pnp.cpp.i
+
+src/pnp.s: src/pnp.cpp.s
+.PHONY : src/pnp.s
+
+# target to generate assembly for a file
+src/pnp.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/opencv.dir/build.make CMakeFiles/opencv.dir/src/pnp.cpp.s
+.PHONY : src/pnp.cpp.s
+
 src/serial.o: src/serial.cpp.o
 .PHONY : src/serial.o
 
@@ -249,6 +273,30 @@ src/test.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/opencv.dir/build.make CMakeFiles/opencv.dir/src/test.cpp.s
 .PHONY : src/test.cpp.s
 
+src/test2.o: src/test2.cpp.o
+.PHONY : src/test2.o
+
+# target to build an object file
+src/test2.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/opencv.dir/build.make CMakeFiles/opencv.dir/src/test2.cpp.o
+.PHONY : src/test2.cpp.o
+
+src/test2.i: src/test2.cpp.i
+.PHONY : src/test2.i
+
+# target to preprocess a source file
+src/test2.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/opencv.dir/build.make CMakeFiles/opencv.dir/src/test2.cpp.i
+.PHONY : src/test2.cpp.i
+
+src/test2.s: src/test2.cpp.s
+.PHONY : src/test2.s
+
+# target to generate assembly for a file
+src/test2.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/opencv.dir/build.make CMakeFiles/opencv.dir/src/test2.cpp.s
+.PHONY : src/test2.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -267,12 +315,18 @@ help:
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
+	@echo "... src/pnp.o"
+	@echo "... src/pnp.i"
+	@echo "... src/pnp.s"
 	@echo "... src/serial.o"
 	@echo "... src/serial.i"
 	@echo "... src/serial.s"
 	@echo "... src/test.o"
 	@echo "... src/test.i"
 	@echo "... src/test.s"
+	@echo "... src/test2.o"
+	@echo "... src/test2.i"
+	@echo "... src/test2.s"
 .PHONY : help
 
 

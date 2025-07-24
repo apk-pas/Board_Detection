@@ -14,8 +14,9 @@ void tests(VideoCapture video);
 int main()
 {
     VideoCapture video(0);
-    //capture(video);
-    tests(video);
+    capture(video);
+    //tests(video);
+
 
     return 0;
 }

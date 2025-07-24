@@ -83,11 +83,11 @@ void tests(VideoCapture video)
 
         // 腐蚀
         for (int i = 0; i < erode_iters; i++)
-            erode(mask, mask, kernel);
+            dilate(mask, mask, kernel);
 
         // 膨胀
         for (int i = 0; i < dilate_iters; i++)
-            dilate(mask, mask, kernel);
+            erode(mask, mask, kernel);
 
         // 闭开运算去噪
         morphologyEx(mask, mask, MORPH_OPEN, kernel);

@@ -9,17 +9,17 @@ Mat origin_Process(Mat img)
     //转hsv图像并提取出黄色
     Mat hsv;
     cvtColor(img,hsv,COLOR_BGR2HSV);
-    GaussianBlur(hsv, hsv, Size(3,3), 0);
-    inRange(hsv,Scalar(20,80,40),Scalar(40,200,255),hsv);
+    //GaussianBlur(hsv, hsv, Size(3,3), 0);
+    inRange(hsv,Scalar(24,50,140),Scalar(43,255,255),hsv);
     //imshow("hsv",hsv);
 
     //腐蚀膨胀去噪点
     Mat kernel = getStructuringElement(MORPH_ELLIPSE, Size(3, 3));
-    for(int i=0;i<0;i++){ 
+    for(int i=0;i<2;i++){ 
         dilate(hsv,hsv,kernel);
         //erode(hsv,hsv,kernel);
     }
-    for(int i=0;i<0;i++){
+    for(int i=0;i<2;i++){
         //dilate(hsv,hsv,kernel);
         erode(hsv,hsv,kernel);
     }
@@ -41,7 +41,7 @@ int Match_Image(Mat img)
 {
     Mat example = imread("/home/summer/Board_Detection/results/exp.png",0);
 
-    //进行物体轮廓匹配s
+    //进行物体轮廓匹配
     double value = matchShapes(example,img,CONTOURS_MATCH_I1,0.1);
     cout << value << endl;
     double a = 0.1 ;//匹配的阈值

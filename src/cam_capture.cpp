@@ -6,6 +6,7 @@ using namespace std;
 
 Mat origin_Process(Mat img);
 void find(Mat edge,Mat img);
+void processImage(Mat image);
 
 void capture(VideoCapture video)
 {
@@ -21,6 +22,7 @@ void capture(VideoCapture video)
         {
             break;
         }
+        //processImage(frame);
 
     }
 }
