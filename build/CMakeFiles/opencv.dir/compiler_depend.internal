@@ -1243,12 +1243,8 @@ CMakeFiles/opencv.dir/src/main.cpp.o
  /usr/include/opencv4/opencv2/video/tracking.hpp
  /usr/include/opencv4/opencv2/video/background_segm.hpp
 
-CMakeFiles/opencv.dir/src/serial.cpp.o
- /home/summer/Board_Detection/src/serial.cpp
- /usr/include/stdc-predef.h
-
-CMakeFiles/opencv.dir/src/test.cpp.o
- /home/summer/Board_Detection/src/test.cpp
+CMakeFiles/opencv.dir/src/pnp.cpp.o
+ /home/summer/Board_Detection/src/pnp.cpp
  /usr/include/stdc-predef.h
  /usr/include/opencv4/opencv2/opencv.hpp
  /usr/include/opencv4/opencv2/opencv_modules.hpp
@@ -1661,8 +1657,12 @@ CMakeFiles/opencv.dir/src/test.cpp.o
  /usr/include/opencv4/opencv2/video/tracking.hpp
  /usr/include/opencv4/opencv2/video/background_segm.hpp
 
-CMakeFiles/opencv.dir/src/test2.cpp.o
- /home/summer/Board_Detection/src/test2.cpp
+CMakeFiles/opencv.dir/src/serial.cpp.o
+ /home/summer/Board_Detection/src/serial.cpp
+ /usr/include/stdc-predef.h
+
+CMakeFiles/opencv.dir/src/test.cpp.o
+ /home/summer/Board_Detection/src/test.cpp
  /usr/include/stdc-predef.h
  /usr/include/opencv4/opencv2/opencv.hpp
  /usr/include/opencv4/opencv2/opencv_modules.hpp

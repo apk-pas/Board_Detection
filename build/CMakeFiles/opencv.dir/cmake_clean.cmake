@@ -11,8 +11,6 @@ file(REMOVE_RECURSE
   "CMakeFiles/opencv.dir/src/serial.cpp.o.d"
   "CMakeFiles/opencv.dir/src/test.cpp.o"
   "CMakeFiles/opencv.dir/src/test.cpp.o.d"
-  "CMakeFiles/opencv.dir/src/test2.cpp.o"
-  "CMakeFiles/opencv.dir/src/test2.cpp.o.d"
   "opencv"
   "opencv.pdb"
 )

@@ -4,6 +4,8 @@
 using namespace cv;
 using namespace std;
 
+void pnp(Point2f* corners,Mat& tvec,Mat& rvec);
+
 Mat origin_Process(Mat img)
 {
     //转hsv图像并提取出黄色
@@ -35,21 +37,6 @@ Mat origin_Process(Mat img)
     //imshow("edge",edge);
     //imwrite("/home/summer/Board_Detection/photo/exp.png",edge);
     return edge;
-}
-
-int Match_Image(Mat img)
-{
-    Mat example = imread("/home/summer/Board_Detection/results/exp.png",0);
-
-    //进行物体轮廓匹配
-    double value = matchShapes(example,img,CONTOURS_MATCH_I1,0.1);
-    cout << value << endl;
-    double a = 0.1 ;//匹配的阈值
-    if(value < a)
-    {
-        return 1;
-    }
-        return 0;
 }
 
 void find(Mat edge,Mat img)
@@ -103,7 +90,34 @@ void find(Mat edge,Mat img)
             if(i==3)
             line(result,corners[i],corners[0],Scalar(0,255,0),4);
         }
-        circle(result,ctr,4,Scalar(0,255,0),-1);
-    }
-    imshow("result",result);
+        //circle(result,ctr,4,Scalar(0,255,0),-1);
+        // circle(result,corners[0],4,Scalar(0,0,0),-1);
+        // circle(result,corners[1],4,Scalar(255,0,0),-1);
+        // circle(result,corners[2],4,Scalar(0,0,255),-1);
+        // circle(result,corners[3],4,Scalar(255,255,255),-1);
+        // circle(result,Point(0,0),8,Scalar(0,255,0),-1);
+        
+        Mat rvec;
+        Mat tvec;
+        pnp(corners,tvec,rvec);
+
+        string tvecText = "tvec = [" + to_string((tvec).at<double>(0)) + ", " +
+                      to_string((tvec).at<double>(1)) + ", " +
+                      to_string((tvec).at<double>(2)) + "]";
+        
+        int fontFace = FONT_HERSHEY_SIMPLEX;
+        double fontScale = 0.8;
+        int thickness = 2;
+
+        // 设置文字颜色（BGR格式）
+        Scalar color(255, 255, 255);  // 白色
+
+        // 设置文本位置（左上角）
+        Point position(10, 30);  // (x=10, y=30)
+
+        // 在图像上绘制平移向量
+        putText(result, tvecText, position, fontFace, fontScale, color, thickness);
+        }
+
+        imshow("result",result);
 }

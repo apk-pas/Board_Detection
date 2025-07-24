@@ -273,30 +273,6 @@ src/test.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/opencv.dir/build.make CMakeFiles/opencv.dir/src/test.cpp.s
 .PHONY : src/test.cpp.s
 
-src/test2.o: src/test2.cpp.o
-.PHONY : src/test2.o
-
-# target to build an object file
-src/test2.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/opencv.dir/build.make CMakeFiles/opencv.dir/src/test2.cpp.o
-.PHONY : src/test2.cpp.o
-
-src/test2.i: src/test2.cpp.i
-.PHONY : src/test2.i
-
-# target to preprocess a source file
-src/test2.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/opencv.dir/build.make CMakeFiles/opencv.dir/src/test2.cpp.i
-.PHONY : src/test2.cpp.i
-
-src/test2.s: src/test2.cpp.s
-.PHONY : src/test2.s
-
-# target to generate assembly for a file
-src/test2.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/opencv.dir/build.make CMakeFiles/opencv.dir/src/test2.cpp.s
-.PHONY : src/test2.cpp.s
-
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -324,9 +300,6 @@ help:
 	@echo "... src/test.o"
 	@echo "... src/test.i"
 	@echo "... src/test.s"
-	@echo "... src/test2.o"
-	@echo "... src/test2.i"
-	@echo "... src/test2.s"
 .PHONY : help
 
 

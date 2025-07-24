@@ -17,6 +17,7 @@ void capture(VideoCapture video)
         Mat edge = origin_Process(frame);
 
         find(edge,frame);
+        //imshow("frame",frame);
 
         if(waitKey(80)==27)
         {

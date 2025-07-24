@@ -14,7 +14,6 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/home/summer/Board_Detection/src/pnp.cpp" "CMakeFiles/opencv.dir/src/pnp.cpp.o" "gcc" "CMakeFiles/opencv.dir/src/pnp.cpp.o.d"
   "/home/summer/Board_Detection/src/serial.cpp" "CMakeFiles/opencv.dir/src/serial.cpp.o" "gcc" "CMakeFiles/opencv.dir/src/serial.cpp.o.d"
   "/home/summer/Board_Detection/src/test.cpp" "CMakeFiles/opencv.dir/src/test.cpp.o" "gcc" "CMakeFiles/opencv.dir/src/test.cpp.o.d"
-  "/home/summer/Board_Detection/src/test2.cpp" "CMakeFiles/opencv.dir/src/test2.cpp.o" "gcc" "CMakeFiles/opencv.dir/src/test2.cpp.o.d"
   )
 
 # Targets to which this target links.
