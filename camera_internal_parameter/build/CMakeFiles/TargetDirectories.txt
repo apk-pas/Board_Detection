@@ -1,3 +1,0 @@
-/home/summer/Board_Detection/canshu/build/CMakeFiles/opencv.dir
-/home/summer/Board_Detection/canshu/build/CMakeFiles/edit_cache.dir
-/home/summer/Board_Detection/canshu/build/CMakeFiles/rebuild_cache.dir
