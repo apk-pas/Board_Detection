@@ -4,6 +4,9 @@
 using namespace cv;
 using namespace std;
 
+extern bool isDetected;
+extern Point2f corners[4];
+
 Mat origin_Process(Mat img);
 void find(Mat edge,Mat img);
 void processImage(Mat image);

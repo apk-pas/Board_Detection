@@ -4,6 +4,8 @@
 using namespace cv;
 using namespace std;
 
+extern bool isDetected;
+extern Point2f corners[4];
 void pnp(Point2f* corners,Mat& tvec,Mat& rvec);
 
 Mat origin_Process(Mat img)
@@ -11,7 +13,7 @@ Mat origin_Process(Mat img)
     //转hsv图像并提取出黄色
     Mat hsv;
     cvtColor(img,hsv,COLOR_BGR2HSV);
-    inRange(hsv,Scalar(24,50,140),Scalar(43,255,255),hsv);
+    inRange(hsv,Scalar(20,50,120),Scalar(40,255,255),hsv);
 
     //腐蚀膨胀去噪点
     Mat kernel = getStructuringElement(MORPH_ELLIPSE, Size(3, 3));
@@ -21,23 +23,22 @@ Mat origin_Process(Mat img)
     for(int i=0;i<2;i++){
         erode(hsv,hsv,kernel);
     }
-
-    //闭运算和开运算去噪
     morphologyEx(hsv,hsv,MORPH_CLOSE,kernel);
     morphologyEx(hsv,hsv,MORPH_OPEN,kernel);
 
-    //利用高斯模糊降噪
+    //利用高斯模糊降噪之后利用canny算子提取物体边缘
     Mat edge;
     GaussianBlur(hsv, hsv, Size(3,3), 2, 2);
     imshow("hsv",hsv);
-
-    //Canny边缘检测
     Canny(hsv,edge,150,100);
     return edge;
 }
 
 void find(Mat edge,Mat img)
 {
+    isDetected = false;
+    memset(corners, 0, sizeof(corners));
+
     //找出所有轮廓
     vector<vector<Point>> contours;
     findContours(edge,contours,RETR_LIST,CHAIN_APPROX_SIMPLE);
@@ -64,34 +65,54 @@ void find(Mat edge,Mat img)
         drawContours(result,approxs,static_cast<int>(a),Scalar(255,0,0),4);
         if(approx.size()==6 && !isContourConvex(approx))
         {
-            key++;  //计算六边形数量，便于后续pnp处理
+            key++;
             allHexPoints.insert(allHexPoints.end(),approx.begin(),approx.end());
         }
         a++;
     }
-    
-    if(!allHexPoints.empty())
+
+    if(key>2)
     {
-        //取四个六边形点的最小外接矩形
+        //取最小外接矩形
         RotatedRect bounding = minAreaRect(allHexPoints);
-        Point2f corners[4];
-        Point2f ctr;
+        isDetected = true;
         bounding.points(corners);
-        ctr = bounding.center;
+        Point2f ctr = bounding.center;
         for(int i=0;i<4;i++)
         {
             if(i<3)
             line(result,corners[i],corners[i+1],Scalar(0,255,0),4);
             if(i==3)
             line(result,corners[i],corners[0],Scalar(0,255,0),4);
-        } 
-        
-        //pnp提取平移向量和旋转向量
+        }
+
         Mat rvec;
         Mat tvec;
         pnp(corners,tvec,rvec);
 
-        //标出平移向量tvec
+        Mat P = Mat::zeros(3, 4, CV_64F); // 3x4
+        Mat R;
+        Rodrigues(rvec, R); // 把 rvec 转换为 R（3x3）
+        R.copyTo(P(Rect(0, 0, 3, 3)));     // 左边放 R
+        tvec.copyTo(P(Rect(3, 0, 1, 3)));  // 右边放 t
+
+        // 使用 decomposeProjectionMatrix 提取欧拉角
+        Mat cameraMatrix = (Mat_<double>(3, 3) << 
+            1036, 0, 640,
+            0, 1036, 320,
+            0, 0, 1
+        );
+        Mat rotMatrix, transVect, rotMatrixX, rotMatrixY, rotMatrixZ;
+        Vec3d eulerAngles;
+
+        decomposeProjectionMatrix(P, cameraMatrix, rotMatrix, transVect,
+                              rotMatrixX, rotMatrixY, rotMatrixZ,
+                              eulerAngles);
+
+        string angletext = "angle = " +  to_string(eulerAngles[0]) + ", " +
+                      to_string(eulerAngles[1]) + ", " +
+                      to_string(eulerAngles[2]) + "]";
+        
         string tvecText = "tvec = [" + to_string((tvec).at<double>(0)) + ", " +
                       to_string((tvec).at<double>(1)) + ", " +
                       to_string((tvec).at<double>(2)) + "]";
@@ -99,13 +120,18 @@ void find(Mat edge,Mat img)
         int fontFace = FONT_HERSHEY_SIMPLEX;
         double fontScale = 0.8;
         int thickness = 2;
-        Scalar color(255, 255, 255);
-        Point position(10, 30);
+
+        // 设置文字颜色（BGR格式）
+        Scalar color(255, 255, 255);  // 白色
+
+        // 设置文本位置（左上角）
+        Point position(10, 30);  // (x=10, y=30)
+        Point position2(10, 200);  // (x=10, y=30)
 
         // 在图像上绘制平移向量
         putText(result, tvecText, position, fontFace, fontScale, color, thickness);
+        putText(result, angletext, position2, fontFace, fontScale, color, thickness);
         }
 
-        //显示结果
         imshow("result",result);
 }

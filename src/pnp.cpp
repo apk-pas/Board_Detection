@@ -4,6 +4,8 @@
 using namespace cv;
 using namespace std;
 
+extern Point2f corners[4];
+
 void pnp(Point2f* corners,Mat& tvec,Mat& rvec)
 {
     //定义3D世界坐标系中的参考点
